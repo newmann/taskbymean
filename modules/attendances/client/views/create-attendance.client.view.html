@@ -1,0 +1,53 @@
+<section ng-controller="AttendancesController">
+  <div class="page-header">
+    <h1>New Attendance</h1>
+  </div>
+  <div class="col-md-12">
+    <form name="attendanceForm" class="form-horizontal" ng-submit="create(attendanceForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label for="fromdate">From Date:</label>
+          <p class="input-group">
+            <input type="text" class="form-control" id="fromdate" uib-datepicker-popup="{{dateFormat}}" ng-model="fromdate" is-open="popupFromdate.opened" datepicker-options="dateOptions"  close-text="Close" alt-input-formats="altInputFormats" required/>
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-default" ng-click="openFromdate()"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+          </p>
+          <div ng-messages="attendanceForm.fromdate.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Attendance FromDate is required.</p>
+          </div>
+        </div>
+        <div class="form-group" show-errors>
+          <label for="todate">To Date:</label>
+          <p class="input-group">
+            <input type="text" class="form-control" id="todate" uib-datepicker-popup
+                   ng-model="todate" is-open="popupTodate.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close"  />
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-default" ng-click="openTodate()"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+          </p>
+          <div ng-messages="attendanceForm.todate.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Attendance ToDate is required.</p>
+          </div>
+        </div>
+        <div class="form-group" show-errors>
+          <label for="dest">Destination</label>
+          <input name="dest" type="text" ng-model="dest" id="dest" class="form-control" placeholder="Destination" required>
+          <div ng-messages="attendanceForm.dest.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Attendance destination is required.</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="remark">Remark</label>
+          <textarea name="remark" ng-model="remark" id="remark" class="form-control" cols="30" rows="10" placeholder="Remark"></textarea>
+        </div>
+        <div class="form-group">
+          <input type="submit" class="btn btn-default">
+        </div>
+        <div ng-show="error" class="text-danger">
+          <strong ng-bind="error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>

@@ -1,0 +1,22 @@
+<section ng-controller="AttendancesController" ng-init="find()">
+  <div class="page-header">
+    <h1>Attendances</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="attendance in attendances" ui-sref="attendances.view({attendanceId: attendance._id})" class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="attendance.created | date:'mediumDate'"></span>
+        by
+        <span ng-bind="attendance.user.displayName"></span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="attendance.fromdate"></h4>
+      <h4 class="list-group-item-heading" ng-bind="attendance.todate"></h4>
+      <h4 class="list-group-item-heading" ng-bind="attendance.dest"></h4>
+      <p class="list-group-item-text" ng-bind="attendance.remark"></p>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="attendances.$resolved && !attendances.length">
+    No attendances yet, why don't you <a ui-sref="attendances.create">create one</a>?
+  </div>
+</section>

@@ -1,0 +1,26 @@
+<section ng-controller="AttendancesController" ng-init="findOne()">
+  <div class="page-header">
+    <h1 >Attendance</h1>
+  </div>
+  <div class="pull-right" ng-show="authentication.user._id == attendance.user._id">
+    <a class="btn btn-primary" ui-sref="attendances.edit({attendanceId: attendance._id})">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" ng-click="remove();">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <div class="col-md-12">
+    <label for="fromdate">From Date:</label>
+    <p class="list-group-item-text" ng-bind="attendance.fromdate"></p>
+    <label for="todate">To Date:</label>
+    <p class="list-group-item-text" ng-bind="attendance.todate"></p>
+
+    <label for="dest">Destination:</label>
+    <p class="list-group-item-text" ng-bind="attendance.dest"></p>
+    <label for="remark">Remark:</label>
+    <p class="list-group-item-text" ng-bind="attendance.remark"></p>
+
+  </div>
+
+</section>
